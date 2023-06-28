@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+        }
+
+        .item {
+            width: 300px;
+            height: 100px;
+            background-color: rgb(237, 241, 241);
+            border: 1px #000 solid;
+            margin-bottom: 10px;
+        }
+
+        .dropzone {
+            width: 300px;
+            padding: 0 20px;
+            height: 1000px;
+            margin-bottom: 10px;
+            border: 1px #000 solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <div id="draggableElement" class="item" draggable="true">可拖拽的元素</div>
+        <div class="dropzone">拖放区域
+            <div id="" class="item">示例元素</div>
+            <div id="" class="item">示例元素</div>
+            <div id="" class="item">示例元素</div>
+            <div id="" class="item">示例元素</div>
+            <div id="" class="item">示例元素</div>
+        </div>
+        <div class="dropzone">拖放区域
+        </div>
+        <div id="dropzone">拖放区域
+        </div>
+    </div>
+
+    <script>
+
+        window.addEventListener('mousedown', (e) => {
+            // console.log(e.target);
+            // console.log(e.target.id); // 输出元素的ID
+            // console.log(e.target.className); // 输出元素的Class
+            if (e.target.className === 'item') {
+                e.target.setAttribute('draggable', 'true');
+            }
+        })
+
+        document.addEventListener('dragstart', (event) => {
+            console.log('startDrag------');
+            // 设置要传输的数据（这里传输元素的ID）
+            event.dataTransfer.setData('text/plain', event.target.id);
+        });
+
+        document.addEventListener('dragover', (event) => {
+            event.preventDefault(); // 阻止默认的拖拽行为
+        });
+        document.addEventListener('drop', (event) => {
+            event.preventDefault(); // 阻止默认的拖拽行为
+            const draggedElementId = event.dataTransfer.getData('text/plain');
+            const source = document.getElementById(draggedElementId)
+            console.log('source: ', source);
+            event.target.appendChild(source);
+        });
+
+    </script>
+</body>
+
+</html>
