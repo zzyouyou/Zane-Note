@@ -7,6 +7,7 @@ export default defineConfig({
   description: "my note",
   head: [],
   lastUpdated: true,
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -53,10 +54,17 @@ export default defineConfig({
         ]
       },
     ],
-    lastUpdatedText: 'Updated Date',
-
+    // 社交logo链接
     socialLinks: [
       { icon: 'github', link: 'https://github.com/zzyouyou/Zane-Note' }
-    ]
-  }
+    ],
+
+    editLink: {
+      pattern: 'https://github.com/zzyouyou/Zane-Note/edit/main/docs/:path',
+      text: '编辑'
+    },
+
+    lastUpdatedText: '上次更新时间',
+  },
+
 })
