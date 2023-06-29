@@ -1,6 +1,10 @@
 # Zane-Note
 zane's note
-<details>xiaosi
+<details>
+xiaosi
+
 nihao
-dn</details>
+
+dn
+</details>
 
