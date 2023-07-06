@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress'
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Zane笔记",
@@ -9,6 +8,7 @@ export default defineConfig({
   lastUpdated: true,
 
   themeConfig: {
+    logo: '/assets/logo5.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
@@ -17,8 +17,8 @@ export default defineConfig({
         items: [
           { text: '变更日志', link: '/markdown/logs/logs' },
           { text: '常用语法示例', link: '/markdown-examples' },
-          { text: '运行时API', link: '/api-examples' }
-
+          { text: '运行时API', link: '/api-examples' },
+          { text: 'vitepress api', link: 'https://vitepress.dev/reference/site-config' },
         ]
       }
     ],
@@ -46,9 +46,17 @@ export default defineConfig({
         ]
       },
       {
+        text: '生活',
+        collapsed: false,
+        items: [
+          { text: 'Tips', link: '/markdown/生活/Tips' }
+        ]
+      },
+      {
         text: '随笔',
         collapsed: false,
         items: [
+          { text: '技术人生', link: '/markdown/随笔/技术人生' },
           { text: '好偷！', link: '/markdown/随笔/好句' },
           { text: '穷啊！', link: '/markdown/随笔/穷啊' }
         ]
@@ -66,5 +74,11 @@ export default defineConfig({
 
     lastUpdatedText: '上次更新时间',
   },
+  markdown: {
+    config: (md) => {
+      // use more plugins!
+      md.use(require('markdown-it-task-lists'))
+    }
+  }
 
 })
